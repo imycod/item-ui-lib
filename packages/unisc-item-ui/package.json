@@ -1,0 +1,40 @@
+{
+  "name": "unisc-item-ui",
+  "version": "0.0.3",
+  "description": "this is a vue3 ui library",
+  "author": "wuxs <317009160@qq.com>",
+  "main": "dist/index.js",
+  "module": "es/index.js",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue3",
+    "components"
+  ],
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.js"
+    },
+    "./es/*": "./es/*",
+    "./dist/*": "./dist/*",
+    "./lib/*": "./lib/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "es",
+    "lib"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "build:umd": "vite build --config vite.umd.config.ts",
+    "build:style": "vite build --config vite.style.config.ts"
+  },
+  "dependencies": {
+    "@floating-ui/vue": "^1.0.2",
+    "classnames": "^2.5.1",
+    "vue": "^3.0.0"
+  }
+}
