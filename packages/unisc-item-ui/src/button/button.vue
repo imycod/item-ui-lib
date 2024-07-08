@@ -4,7 +4,7 @@ import { defineComponent } from 'vue'
 import { useClassname } from '../utils/use-classname'
 
 export default defineComponent({
-  name: 'TButton',
+  name: 'IButton',
   props: {
     type: {
       type: String as PropType<'default' | 'primary' | 'dashed'>,
