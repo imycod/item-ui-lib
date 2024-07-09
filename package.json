@@ -14,7 +14,7 @@
     "test": "vitest",
     "coverage": "vitest --coverage",
     "unisc-item-ui:css": "esno ./scripts/style-bundle.ts",
-    "build:lib":"node ./build"
+    "build:lib": "node ./build"
   },
   "dependencies": {
     "vue": "^3.3.11"
@@ -39,8 +39,10 @@
     "less": "^4.2.0",
     "lint-staged": "^15.2.0",
     "postcss": "^8.4.32",
+    "sass": "^1.77.6",
     "typescript": "^5.3.3",
     "unbuild": "^2.0.0",
+    "unplugin-auto-import": "^0.17.6",
     "unplugin-vue-components": "^0.26.0",
     "vite": "^5.0.7",
     "vite-plugin-dts": "^3.6.4",

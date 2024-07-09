@@ -1,10 +1,4 @@
 {
   "extends": ["../../tsconfig.json"],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "unisc-item-ui/*": ["dist/item-ui/*"]
-    }
-  },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

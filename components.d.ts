@@ -7,6 +7,11 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElProgress: typeof import('element-plus/es')['ElProgress']
+    IButton: typeof import('unisc-item-ui')['Button']
+    IPrintProgress: typeof import('unisc-item-ui')['PrintProgress']
     TButton: typeof import('unisc-item-ui')['Button']
   }
 }
