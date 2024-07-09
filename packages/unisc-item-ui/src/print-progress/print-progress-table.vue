@@ -1,5 +1,4 @@
 <template>
-  {{ cls }}
   <el-dialog :class="cls" v-model="visible" :before-close="beforeClose">
     1
   </el-dialog>

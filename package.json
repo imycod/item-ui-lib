@@ -14,7 +14,8 @@
     "test": "vitest",
     "coverage": "vitest --coverage",
     "unisc-item-ui:css": "esno ./scripts/style-bundle.ts",
-    "build:lib": "node ./build"
+    "build:lib": "node ./build",
+    "publish:lib": "cross-env publish=true node ./build"
   },
   "dependencies": {
     "vue": "^3.3.11"

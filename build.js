@@ -4,6 +4,7 @@
 
 import { execSync } from "child_process";
 import path from "path";
+import fs from "fs";
 
 const projectRoot = process.cwd();
 const uiPackagePath = path.join(projectRoot, "packages", "unisc-item-ui");
@@ -29,9 +30,35 @@ function buildRootCSS() {
   runCommand("npm run unisc-item-ui:css");
 }
 
+// Function to update the version in package.json
+function updatePackageVersion() {
+  const packageJsonPath = path.join(uiPackagePath, "package.json");
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
+
+  const versionParts = packageJson.version.split(".");
+  versionParts[2] = parseInt(versionParts[2], 10) + 1; // Increment patch version
+  packageJson.version = versionParts.join(".");
+
+  fs.writeFileSync(
+    packageJsonPath,
+    JSON.stringify(packageJson, null, 2),
+    "utf8"
+  );
+  console.log(`Updated version to ${packageJson.version}`);
+}
+
+function publish() {
+  process.chdir(uiPackagePath);
+  runCommand("npm publish");
+}
+
 function main() {
   buildUIPackage();
   buildRootCSS();
+  if (process.env.publish) {
+    updatePackageVersion();
+    publish();
+  }
 }
 
 main();
