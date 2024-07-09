@@ -3,11 +3,20 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import dts from "vite-plugin-dts";
 import { tsxAutoProps } from "vite-plugin-tsx-auto-props";
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // 读取我们当前的根目录
 export default defineConfig({
   // 首先就是我们的插件，插件我们直接找打我们跟目录下的vite.config.ts的文件
   plugins: [
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
     dts({
       entryRoot: "src",
       outDir: ["lib", "es"],
@@ -26,7 +35,13 @@ export default defineConfig({
       // 因为我们需要将esm和cjs输出在不同的目录
       // 所以我们需要给output一个数组
       // 我们先来写一下esm的打包配置
-      external: ["@floating-ui/vue", "vue"],
+      external: [
+        "@floating-ui/vue",
+        "vue",
+        "@vueuse/core",
+        "element-plus",
+        "@element-plus/icons-vue",
+      ],
       output: [
         {
           // 因为我们需要生成多个文件，所以我们这里设置preserverModules为true

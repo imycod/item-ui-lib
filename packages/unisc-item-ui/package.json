@@ -1,6 +1,6 @@
 {
   "name": "unisc-item-ui",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "this is a vue3 ui library",
   "author": "wuxs <317009160@qq.com>",
   "main": "dist/index.js",
@@ -39,5 +39,12 @@
     "classnames": "^2.5.1",
     "element-plus": "^2.7.6",
     "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.4",
+    "unplugin-auto-import": "^0.17.6",
+    "unplugin-vue-components": "^0.27.2"
   }
 }

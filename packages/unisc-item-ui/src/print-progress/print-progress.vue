@@ -2,45 +2,15 @@
 import type { PropType } from 'vue'
 import { defineComponent, reactive, watch, ref } from 'vue'
 import { useClassname } from '../utils/use-classname'
-import { useDraggable } from '@vueuse/core'
 import { ElIcon } from "element-plus"
 import { ArrowDownBold, ArrowUpBold }  from "@element-plus/icons-vue"
-import { title } from 'process'
+import {useExpaned,useMyDraggable} from "./compoables"
 
-function useMyDraggable() {
-  const el = ref<HTMLElement | null>(null)
-  const initialValue = reactive({
-    x: 0,
-    y: 50,
-    style: ''
-  })
-  const { style } = useDraggable(el, {
-    initialValue: initialValue
-  })
-  watch(style, (v) => {
-    initialValue.style = v
-  })
-  return {
-    el,
-    initialValue
-  }
-}
-
-function useExpaned() {
-  const isExpand = ref(false)
-  const doSwitch = () => {
-    isExpand.value = !isExpand.value
-  }
-  return [
-    isExpand,
-    doSwitch
-  ]
-}
 
 export default defineComponent({
   name: 'IPrintProgress',
-  components: {
-    'el-icon': ElIcon,
+  components:{
+    ElIcon,
     ArrowDownBold,
     ArrowUpBold
   },
@@ -103,6 +73,23 @@ export default defineComponent({
       </div>
     </div>
     <!-- progress -->
-     
+    <div class="mt-[16px]">
+			<div class="mb-[24px] text-[#B3B4B5] text-[14px]" v-if="isExpand">
+				The printing is in progress and is expected to take approximately 600 seconds.
+			</div>
+			<el-progress
+				:percentage="50"
+				status="success"
+				:show-text="false"
+				:indeterminate="true"
+				:duration="5"
+			/>
+			<div class="mt-[8px] text-right text-[#B3B4B5] text-[10px]">500 seconds left</div>
+		</div>
+    <!-- button handle -->
+		<!-- <div class="text-right mt-[30px]" v-if="isExpand">
+			<span class="text-red-500 hover:cursor-pointer" @click="abort">Abort Print</span>
+			<span class="text-purple-500 ml-10 hover:cursor-pointer" @click="view">View Progress</span>
+		</div> -->
   </div>
 </template>
