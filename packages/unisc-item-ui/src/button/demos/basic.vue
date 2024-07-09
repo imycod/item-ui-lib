@@ -14,14 +14,14 @@ function myClick() {
 
 <template>
   <div style="display: flex;gap: 10px;">
-    <t-button @click="myClick">
+    <i-button @click="myClick">
       按钮1
-    </t-button>
-    <t-button type="primary" @click="myClick">
+    </i-button>
+    <i-button type="primary" @click="myClick">
       按钮2
-    </t-button>
-    <t-button type="dashed">
+    </i-button>
+    <i-button type="dashed">
       按钮3
-    </t-button>
+    </i-button>
   </div>
 </template>

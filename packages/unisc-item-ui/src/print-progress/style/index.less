@@ -1,0 +1,53 @@
+@import "../../style/index.less";
+
+@btn-prefix-cls: ~"@{prefix-cls}-print-progress";
+
+.@{btn-prefix-cls} {
+  position: fixed;
+  top: 24px;
+  right: 21px;
+  width: 389px;
+  height: 110px;
+  border-radius: 8px 8px 8px 8px;
+  background: #21232B;
+  border: 1px solid #555961;
+  transition: height 0.5s ease-in-out;
+  z-index: 999;
+  overflow: hidden;
+  display: flex;
+  padding: 16px 16px 16px 16px;
+  flex-direction: column;
+  box-shadow: 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
+  cursor: move;
+
+
+  &.expanded {
+    height: 230px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px 8px 0px;
+
+    .title {
+      font-size: 16px;
+      font-weight: 500;
+      color: #f0f0f0;
+    }
+
+    .icon {
+      cursor: pointer;
+      
+      svg {
+        width: 15px;
+        height: 15px;
+        color: #fff;
+      }
+    }
+  }
+
+
+
+}

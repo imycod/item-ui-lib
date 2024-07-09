@@ -11,8 +11,6 @@ title: 禁用按钮
 
 <template>
   <div>
-    <i-button disabled>
-      按钮
-    </i-button>
+    <i-print-progress disabled />
   </div>
 </template>

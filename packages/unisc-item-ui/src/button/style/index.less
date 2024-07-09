@@ -1,14 +1,8 @@
-// 以后为了方便替换我们的tov的前缀，我么最好也做成变量的形式会好一些
-// 所以我们把这一部分再进行拆解一下，我们把前缀放到我们的全局的变量中去
-// 我们找到src/style文件夹，然后我们添加一些基础的less变量
-// 最后我们再我们的组件的style的index.less中引用一下。
-
 @import "../../style/index.less";
 
 @btn-prefix-cls: ~"@{prefix-cls}-button";
 
 .@{btn-prefix-cls}{
-  // 就是重置按钮中的默认的样式。
   background: none;
   cursor: pointer;
   border: 1px solid var(--item-color-border);
@@ -21,8 +15,6 @@
   align-items: center;
 
   .disabledStyle() {
-    // 我们需要所有的样式都使用这个禁用，所以我们就直接把这个样式提取出来
-    // 然后给我们的按钮添加一个disabled的属性，就可以直接使用这个样式了
     &:disabled {
       border-color: var(--item-button-color-border-disabled, #d9d9d9);
       color: var(--item-button-color-text-disabled, #bfbfbf);

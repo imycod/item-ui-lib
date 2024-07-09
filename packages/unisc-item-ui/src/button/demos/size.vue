@@ -11,14 +11,14 @@ title: 按钮大小
 
 <template>
   <div style="display: flex;gap: 10px">
-    <t-button size="small">
+    <i-button size="small">
       小按钮
-    </t-button>
-    <t-button>
+    </i-button>
+    <i-button>
       正常
-    </t-button>
-    <t-button size="large">
+    </i-button>
+    <i-button size="large">
       大按钮
-    </t-button>
+    </i-button>
   </div>
 </template>
