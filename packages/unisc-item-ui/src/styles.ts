@@ -1,3 +1,5 @@
+import "./style/style.css";
+
 import "./button/style/index.less";
 import "./print-progress/style/index.less";
 

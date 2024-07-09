@@ -4,14 +4,18 @@
 
 @btn-prefix-cls: ~"@{prefix-cls}-print-progress";
 
+@item-black: #21232b;
+
 .@{btn-prefix-cls} {
+  --item-black: #21232b;
+
   position: fixed;
   top: 24px;
   right: 21px;
   width: 389px;
   height: 110px;
   border-radius: 8px 8px 8px 8px;
-  background: #21232B;
+  background: @item-black;
   border: 1px solid #555961;
   transition: height 0.5s ease-in-out;
   z-index: 999;
@@ -22,34 +26,68 @@
   box-shadow: 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
   cursor: move;
 
-
-  &.expanded {
+  &--expanded {
     height: 230px;
   }
 
-  .header {
+  &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 0px 8px 0px;
 
-    .title {
+    &-title {
       font-size: 16px;
       font-weight: 500;
       color: #f0f0f0;
     }
 
-    .icon {
+    &-icon {
       cursor: pointer;
-      
+
       svg {
         // width: 15px;
         // height: 15px;
-        // color: #fff;
+        color: #fff;
       }
     }
   }
 
+  &__progress {
+    margin-top: 16px;
+    &-text {
+      margin-bottom: 24px;
+      color: #b3b4b5;
+      font-size: 14px;
+    }
 
+    &-subtest {
+      margin-top: 8px;
+      text-align: right;
+      color: #b3b4b5;
+      font-size: 10px;
+    }
+  }
 
+  &__footer {
+    text-align: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    &-text {
+      cursor: pointer;
+      &:first-child {
+        color: rgb(229, 38, 40);
+        margin-right: 20px;
+      }
+      &:last-child {
+        color: #b178f7;
+      }
+    }
+  }
+
+  &__table.el-dialog {
+    // background-color: @item-black;
+    background-color: var(--item-black);
+  }
 }

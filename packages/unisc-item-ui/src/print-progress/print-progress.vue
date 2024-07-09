@@ -1,11 +1,10 @@
 <script lang="ts">
 import type { PropType } from 'vue'
-import { defineComponent, reactive, watch, ref } from 'vue'
+import { defineComponent, reactive, watch, ref, onMounted } from 'vue'
 import { useClassname } from '../utils/use-classname'
 import { ElIcon } from "element-plus"
 import { ArrowDownBold, ArrowUpBold }  from "@element-plus/icons-vue"
-import {useExpaned,useMyDraggable} from "./compoables"
-
+import { useExpaned, useMyDraggable, useProgress } from "./compoables"
 
 export default defineComponent({
   name: 'IPrintProgress',
@@ -31,50 +30,76 @@ export default defineComponent({
       type: String as PropType<'default' | 'small' | 'large'>,
       default: 'default',
     },
+    context:{
+      type:Object,
+      default:()=>({})
+    }
   },
   setup(props, { emit }) {
-    const { cx, c, cm } = useClassname('print-progress')
+    const { cx, c, ce, cm } = useClassname('print-progress')
+    
+    const [isExpand, expand] = useExpaned()
+    // const [isExpand, expand] = props.context['expand'];
+
     const cls = cx(() => {
       return {
         [c()]: true,
-        [c(cm(props.type))]: !!props.type,
-        [c('size', cm(props.size))]: props.size !== 'default',
+        // [c(cm(props.type))]: !!props.type,
+        // [c('size', cm(props.size))]: props.size !== 'default',
+        [c(cm('expanded'))]: isExpand.value,
       }
     })
 
     const { el, initialValue } = useMyDraggable()
-    const [isExpand, doSwitch] = useExpaned()
+
+    const { view,abort,isVisible } = useProgress({
+      context:{
+        expand:props.context['expand']
+      },
+      emit,
+    })
+
+    onMounted(()=>{
+      isVisible.value = true
+    })
 
     return {
-      // draggable
       cls,
+      c,
+      ce,
+      cm,
+      isVisible,
+      // draggable
       el,
       initialValue,
       // icon
       isExpand,
-      doSwitch,
+      expand,
+      // button
+      view,
+      abort
     }
   },
 })
 </script>
 
 <template>
-  <div ref="el" :class="[cls, { 'expanded': isExpand }]" :style="initialValue.style">
+  <div ref="el" v-if="isVisible" :class="cls" :style="initialValue.style">
     <!-- header -->
-    <div class="header">
-      <h4 class="title">{{ title }}</h4>
-      <div class="icon">
-        <el-icon v-if="!isExpand" @click="doSwitch">
+    <div :class="c(ce('header'))">
+      <h4 :class="c(ce('header-title'))">{{ title }}</h4>
+      <div :class="c(ce('header-icon'))">
+        <el-icon v-if="!isExpand" @click="expand">
           <ArrowDownBold />
         </el-icon>
-        <el-icon v-else @click="doSwitch">
+        <el-icon v-else @click="expand">
           <ArrowUpBold />
         </el-icon>
       </div>
     </div>
     <!-- progress -->
-    <div class="mt-[16px]">
-			<div class="mb-[24px] text-[#B3B4B5] text-[14px]" v-if="isExpand">
+    <div :class="c(ce('progress'))">
+			<div :class="c(ce('progress-text'))" v-if="isExpand">
 				The printing is in progress and is expected to take approximately 600 seconds.
 			</div>
 			<el-progress
@@ -84,12 +109,12 @@ export default defineComponent({
 				:indeterminate="true"
 				:duration="5"
 			/>
-			<div class="mt-[8px] text-right text-[#B3B4B5] text-[10px]">500 seconds left</div>
+			<div :class="c(ce('progress-subtest'))">500 seconds left</div>
 		</div>
     <!-- button handle -->
-		<!-- <div class="text-right mt-[30px]" v-if="isExpand">
-			<span class="text-red-500 hover:cursor-pointer" @click="abort">Abort Print</span>
-			<span class="text-purple-500 ml-10 hover:cursor-pointer" @click="view">View Progress</span>
-		</div> -->
+		<div :class="c(ce('footer'))" v-if="isExpand">
+			<span :class="c(ce('footer-text'))" @click="abort">Abort Print</span>
+			<span :class="c(ce('footer-text'))" @click="view">View Progress</span>
+		</div>
   </div>
 </template>
