@@ -1,10 +1,12 @@
 <script lang="ts">
+/* eslint-disable */
+// @ts-nocheck
 import type { PropType } from 'vue'
 import { defineComponent, reactive, watch, ref, onMounted } from 'vue'
 import { useClassname } from '../utils/use-classname'
 import { ElIcon } from "element-plus"
 import { ArrowDownBold, ArrowUpBold }  from "@element-plus/icons-vue"
-import { useExpaned, useMyDraggable, useProgress } from "./compoables"
+import { useExpaned, useMyDraggable, useProgress, useProgressData } from "./compoables"
 
 export default defineComponent({
   name: 'IPrintProgress',
@@ -14,13 +16,25 @@ export default defineComponent({
     ArrowUpBold
   },
   props: {
-    type: {
-      type: String as PropType<'default' | 'primary' | 'dashed'>,
-      default: 'default',
-    },
     title:{
       type: String,
       default: 'Print Task Progress'
+    },
+    text:{
+      type: String,
+      default: 'The printing is in progress and is expected to take approximately 600 seconds.'
+    },
+    subText:{
+      type: String,
+      default: '500 seconds left'
+    },
+    duration:{
+      type: Number,
+      default: 1000,
+    },
+    type: {
+      type: String as PropType<'default' | 'primary' | 'dashed'>,
+      default: 'default',
     },
     disabled: {
       type: Boolean,
@@ -30,16 +44,11 @@ export default defineComponent({
       type: String as PropType<'default' | 'small' | 'large'>,
       default: 'default',
     },
-    context:{
-      type:Object,
-      default:()=>({})
-    }
   },
   setup(props, { emit }) {
     const { cx, c, ce, cm } = useClassname('print-progress')
     
     const [isExpand, expand] = useExpaned()
-    // const [isExpand, expand] = props.context['expand'];
 
     const cls = cx(() => {
       return {
@@ -52,32 +61,30 @@ export default defineComponent({
 
     const { el, initialValue } = useMyDraggable()
 
-    const { view,abort,isVisible } = useProgress({
-      context:{
-        expand:props.context['expand']
-      },
+    const { view,abort,open,isVisible } = useProgress({
       emit,
+      props,
     })
-
-    onMounted(()=>{
-      isVisible.value = true
-    })
+    const [progress]= useProgressData()
 
     return {
       cls,
       c,
       ce,
       cm,
-      isVisible,
       // draggable
       el,
       initialValue,
       // icon
       isExpand,
       expand,
-      // button
+      // progress
+      isVisible,
+      progress,
+      // progress - button
       view,
-      abort
+      abort,
+      open,
     }
   },
 })
@@ -100,16 +107,14 @@ export default defineComponent({
     <!-- progress -->
     <div :class="c(ce('progress'))">
 			<div :class="c(ce('progress-text'))" v-if="isExpand">
-				The printing is in progress and is expected to take approximately 600 seconds.
+				{{text}}
 			</div>
 			<el-progress
-				:percentage="50"
+				:percentage="progress.percentage"
 				status="success"
-				:show-text="false"
-				:indeterminate="true"
-				:duration="5"
+        :show-text="false"
 			/>
-			<div :class="c(ce('progress-subtest'))">500 seconds left</div>
+			<div :class="c(ce('progress-subtest'))">{{subText}}</div>
 		</div>
     <!-- button handle -->
 		<div :class="c(ce('footer'))" v-if="isExpand">

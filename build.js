@@ -52,12 +52,19 @@ function publish() {
   runCommand("npm publish");
 }
 
+function pushGithub() {
+  runCommand("git add .");
+  runCommand(`git commit -m "feat:tailwindcss"`);
+  runCommand("git push");
+}
+
 function main() {
   buildUIPackage();
   buildRootCSS();
   if (process.env.publish) {
     updatePackageVersion();
     publish();
+    pushGithub()
   }
 }
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <print-progress @view="view" :context="{expand:expandContext}"></print-progress>
-    <print-progress-table ref="tableRef" :context="{expand:expandContext}"></print-progress-table>
+    <print-progress ref="printRef" @view="view"></print-progress>
+    <print-progress-table ref="tableRef"></print-progress-table>
   </div>
 </template>
 
@@ -10,12 +10,15 @@ import {ref} from "vue"
 import PrintProgress from './print-progress.vue'
 import PrintProgressTable from './print-progress-table.vue'
 
-import {useExpaned} from "./compoables"
-
-const expandContext = useExpaned()
-
 const tableRef =ref<typeof PrintProgressTable>()
+const printRef =ref<typeof PrintProgress>()
 function view(){
-  tableRef.value.open()
+  tableRef.value!.open()
 }
+function open(isOpen) {
+  return printRef.value!.open(isOpen)
+}
+defineExpose({
+  open,
+})
 </script>
