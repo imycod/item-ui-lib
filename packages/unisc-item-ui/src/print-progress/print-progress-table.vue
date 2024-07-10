@@ -1,4 +1,5 @@
 <template>
+  {{visible}}
   <el-dialog :class="cls" v-model="visible" :before-close="beforeClose">
     {{ progress }}
   </el-dialog>
@@ -24,10 +25,12 @@ function open() {
 }
 
 const [_, expand] = useExpaned()
-const [progress] = useProgressData()
+const [progress, action] = useProgressData();
 
 function beforeClose(done) {
   expand()
+  // 1.查看view时，队列循环结束了，此时为了第二个table能够正常显示，没有在stop reset
+  // action.reset()
   done()
 }
 

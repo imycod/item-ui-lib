@@ -65,7 +65,7 @@ export default defineComponent({
       emit,
       props,
     })
-    const [progress]= useProgressData()
+    const [progress,action]= useProgressData()
 
     return {
       cls,
@@ -85,13 +85,14 @@ export default defineComponent({
       view,
       abort,
       open,
+      reset:action.reset,
     }
   },
 })
 </script>
 
 <template>
-  <div ref="el" v-if="isVisible" :class="cls" :style="initialValue.style">
+  <div ref="el" v-show="isVisible" :class="cls" :style="initialValue.style">
     <!-- header -->
     <div :class="c(ce('header'))">
       <h4 :class="c(ce('header-title'))">{{ title }}</h4>

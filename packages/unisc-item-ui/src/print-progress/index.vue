@@ -15,10 +15,15 @@ const printRef =ref<typeof PrintProgress>()
 function view(){
   tableRef.value!.open()
 }
+
 function open(isOpen) {
   return printRef.value!.open(isOpen)
 }
+function reset(){
+  printRef.value!.reset();
+}
 defineExpose({
   open,
+  reset,
 })
 </script>

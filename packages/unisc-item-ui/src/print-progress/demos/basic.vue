@@ -19,6 +19,10 @@ function open() {
     progress.value = printRef.value!.open(isOpen)
 }
 
+function reset(){
+  printRef.value!.reset()
+}
+
 onMounted(()=>{
   open()
 })
@@ -30,6 +34,7 @@ onMounted(()=>{
     <div>{{progress}}</div>
     <div>
       <i-button type="primary" @click="open" :disabled="isOpen">打开print progress进度框</i-button>
+      <i-button style="margin-left: 10px;" type="primary" @click="reset">reset</i-button>
       <i-print-progress ref="printRef"/>
     </div>
   </div>

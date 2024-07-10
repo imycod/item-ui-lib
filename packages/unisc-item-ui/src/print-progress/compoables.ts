@@ -2,6 +2,7 @@
 // @ts-nocheck
 import { reactive, watch, ref, isRef, readonly, onUnmounted } from "vue";
 import { useDraggable } from "@vueuse/core";
+import {aw} from "vitest/dist/reporters-OH1c16Kq";
 
 export function useMyDraggable() {
   const el = ref<HTMLElement | null>(null);
@@ -36,13 +37,13 @@ export function useExpaned() {
 }
 
 const intervalId = ref(0);
-
-let progress = reactive({
+const progress = reactive({
   list: [],
   status: "padding",
   percentage: 0,
 });
 export function useProgressData(props, done = () => {}) {
+
   const fetchPrintStatus = async () => {
     try {
       // const response = await axios.get('/api/label-process');
@@ -68,12 +69,13 @@ export function useProgressData(props, done = () => {}) {
     clearInterval(intervalId.value);
     fetchPrintStatus();
     const duration = props.duration || 1000;
-    intervalId.value = setInterval(fetchPrintStatus, props.duration);
+    intervalId.value = setInterval(fetchPrintStatus, duration);
   }
 
   function stop() {
     clearInterval(intervalId.value);
     intervalId.value = null;
+    // reset()
     done && done(false);
   }
 
@@ -94,6 +96,7 @@ export function useProgressData(props, done = () => {}) {
     {
       load,
       stop,
+      reset,
     },
   ];
 }
