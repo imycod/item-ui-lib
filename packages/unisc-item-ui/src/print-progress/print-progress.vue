@@ -7,6 +7,7 @@ import { useClassname } from '../utils/use-classname'
 import { ElIcon } from "element-plus"
 import { ArrowDownBold, ArrowUpBold }  from "@element-plus/icons-vue"
 import { useExpaned, useMyDraggable, useProgress, useProgressData } from "./compoables"
+import "element-plus/es/components/progress/style/index";
 
 export default defineComponent({
   name: 'IPrintProgress',
