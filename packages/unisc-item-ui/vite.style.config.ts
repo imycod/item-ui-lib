@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { defineConfig } from "vite";
 import fs from "fs-extra";
+import {createStyleImportPlugin, ElementPlusResolve} from "vite-plugin-style-import";
 
 export default defineConfig({
   build: {
@@ -28,5 +29,20 @@ export default defineConfig({
         fs.removeSync(stylePath);
       },
     },
+    // createStyleImportPlugin({
+    //   resolves: [
+    //     ElementPlusResolve(),
+    //   ],
+    //   libs: [
+    //     {
+    //       libraryName: 'element-plus',
+    //       esModule: true,
+    //       resolveStyle: (name) => {
+    //         console.log('name---',name)
+    //         return `element-plus/lib/theme-chalk/${name}.css`;
+    //       },
+    //     },
+    //   ],
+    // }),
   ],
 });

@@ -9,7 +9,7 @@ import {computed, ref} from "vue";
 import {useExpaned, useProgressData} from "./compoables";
 import {useClassname} from '../utils/use-classname'
 
-const {cx, c, ce, cm} = useClassname('print-progress')
+const {cx, c, ce, cm} = useClassname('print-progress-table')
 const cls = cx(() => {
   return {
     [c()]: true,
