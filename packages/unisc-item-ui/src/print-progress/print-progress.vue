@@ -95,7 +95,7 @@ export default defineComponent({
   <div ref="el" v-show="isVisible" :class="cls" :style="initialValue.style">
     <!-- header -->
     <div :class="c(ce('header'))">
-      <h4 :class="c(ce('header-title'))">{{ title }}</h4>
+      <div :class="c(ce('header-title'))">{{ title }}</div>
       <div :class="c(ce('header-icon'))">
         <el-icon v-if="!isExpand" @click="expand">
           <ArrowDownBold />

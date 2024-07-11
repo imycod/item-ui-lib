@@ -61,6 +61,7 @@
     &-text {
       margin-bottom: 24px;
       color: #b3b4b5;
+      text-align: left;
       font-size: 14px;
     }
 
@@ -92,6 +93,7 @@
   &-table{
     &__table.el-dialog {
        background-color: @item-black;
+      // 相同作用域，比如 print-progress 父级这种样式，子级也要这个类名
       //background-color: var(--item-black);
     }
   }
