@@ -37,6 +37,9 @@ devDependencies:
   unplugin-auto-import:
     specifier: ^0.17.6
     version: 0.17.6(@vueuse/core@10.11.0)
+  unplugin-element-plus:
+    specifier: ^0.8.0
+    version: 0.8.0
   unplugin-vue-components:
     specifier: ^0.27.2
     version: 0.27.2(vue@3.4.31)
@@ -567,6 +570,10 @@ packages:
   /entities@4.5.0:
     resolution: {integrity: sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw==}
     engines: {node: '>=0.12'}
+
+  /es-module-lexer@1.5.4:
+    resolution: {integrity: sha512-MVNK56NiMrOwitFB7cqDwq0CQutbw+0BvLshJSse0MUNU+y1FC3bUS/AQg7oUng+/wKrrki7JfmwtVHkVfPLlw==}
+    dev: true
 
   /escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
@@ -1208,6 +1215,18 @@ packages:
       magic-string: 0.30.10
       minimatch: 9.0.5
       unimport: 3.7.2
+      unplugin: 1.11.0
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  /unplugin-element-plus@0.8.0:
+    resolution: {integrity: sha512-jByUGY3FG2B8RJKFryqxx4eNtSTj+Hjlo8edcOdJymewndDQjThZ1pRUQHRjQsbKhTV2jEctJV7t7RJ405UL4g==}
+    engines: {node: '>=14.19.0'}
+    dependencies:
+      '@rollup/pluginutils': 5.1.0
+      es-module-lexer: 1.5.4
+      magic-string: 0.30.10
       unplugin: 1.11.0
     transitivePeerDependencies:
       - rollup
