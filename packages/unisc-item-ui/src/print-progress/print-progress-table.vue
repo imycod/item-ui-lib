@@ -8,7 +8,6 @@
 import {computed, ref} from "vue";
 import {useExpaned, useProgressData} from "./compoables";
 import {useClassname} from '../utils/use-classname'
-import "element-plus/es/components/dialog/style/index";
 
 const {cx, c, ce, cm} = useClassname('print-progress')
 const cls = cx(() => {

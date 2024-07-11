@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import { defineConfig } from "vite";
