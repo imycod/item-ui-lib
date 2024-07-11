@@ -54,7 +54,7 @@ export default defineConfig({
           entryFileNames: "[name].js",
           // 然后我们需要格式化成esm的格式
           format: "esm",
-          // 最终输出的目录，我们选择在tov-ui下的es目录中
+          // 最终输出的目录，我们选择在unisc-item-ui下的es目录中
           dir: "es",
           // 这就完成了我们的esm的输出配置，
         },
