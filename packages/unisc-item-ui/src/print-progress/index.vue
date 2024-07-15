@@ -6,9 +6,29 @@
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue"
+import {provide, ref} from "vue"
 import PrintProgress from './print-progress.vue'
 import PrintProgressTable from './print-progress-table.vue'
+
+const props = defineProps({
+  title:{
+    type: String,
+    default: 'Print Task Progress'
+  },
+  description:{
+    type: String,
+    default: 'The printing is in progress and is expected to take approximately 600 seconds.'
+  },
+  time:{
+    type: String,
+    default: '500 seconds left'
+  },
+  duration:{
+    type: Number,
+    default: 1000,
+  },
+})
+provide('props',props)
 
 const tableRef =ref<typeof PrintProgressTable>()
 const printRef =ref<typeof PrintProgress>()

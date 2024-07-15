@@ -1,21 +1,62 @@
 .@{btn-prefix-cls} {
   &-table{
-    --el-bg-color: #333847;
+    --el-bg-color: var(--item-color-dark-2);
+
     .el-table{
-      --el-table-border-color: #333847 !important;
+      --el-table-border-color: var(--item-color-dark-1);
+      --el-table-header-bg-color: var(--item-color-dark-1);
+      --el-table-bg-color: #1B1C23 !important;
+      --el-table-text-color: #fff !important;
+      --el-table-row-hover-bg-color: var(--item-color-dark-1);
     }
+    .el-checkbox{
+      --el-checkbox-checked-bg-color: var(--item-color-purple) !important;
+      --el-checkbox-checked-input-border-color:var(--item-color-purple) !important;
+    }
+
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid var(--item-color-dark-1);
+      border-bottom: 0px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      padding: 10px;
+
+      &-description {
+        color: #aeaeae;
+      }
+
+      &-orange {
+        background: #EC4A44 !important;
+        color: #fff !important;
+        border: none !important;
+
+        &:hover {
+          border: 1px solid #fff !important;
+        }
+      }
+    }
+
     &.el-dialog {
-      background-color: @item-black;
+      --el-text-color-primary: #fff;
+      --el-dialog-title-font-size: 24px;
+      --el-dialog-padding-primary: 24px;
+      --el-dialog-border-radius: 8px;
+      --el-color-primary: var(--item-color-purple);
+
+      background-color: var(--item-color-dark-2);
 
       .el-table--border .el-table__inner-wrapper:after, .el-table--border:after, .el-table--border:before, .el-table__inner-wrapper:before{
         display: none;
       }
 
       .el-table__body-wrapper {
-        background: #1B1C23;
+        .orderNo{
+          color: var(--item-color-purple);
+        }
       }
-      // 相同作用域，比如 print-progress 父级这种样式，子级也要这个类名
-      //background-color: var(--item-black);
     }
   }
 }

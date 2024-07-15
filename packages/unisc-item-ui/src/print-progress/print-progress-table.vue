@@ -1,8 +1,16 @@
 <template>
-  <el-dialog :class="cls" v-model="visible" width="50%" :before-close="beforeClose">
-    <el-table :data="tableData" style="width: 100%;" max-height="450">
+  <el-dialog :class="cls" v-model="visible" :title="props.title" width="50%" :before-close="beforeClose">
+    <div :class="c(ce('row'))">
+      <span :class="c(ce('row-description'))">{{ props.description }}</span>
+      <div>
+        <el-button size="small" :class="c(ce('row-orange'))">Abort All</el-button>
+        <el-button size="small" :class="c(ce('row-orange'))">Abort</el-button>
+      </div>
+    </div>
+    <el-table ref="tableRef" @selection-change="selectionChange" :data="tableData" style="width: 100%;" max-height="450">
+      <el-table-column type="selection" width="55" />
       <template v-for="column in columns">
-        <el-table-column :prop="column.dataIndex" :width="column.width" :label="column.title" />
+        <el-table-column :class-name="column.dataIndex" :sortable="column.sortable" :prop="column.dataIndex" :width="column.width" :label="column.title" />
       </template>
     </el-table>
   </el-dialog>
@@ -11,10 +19,12 @@
 <script lang="ts" setup>
 /* eslint-disable */
 // @ts-nocheck
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import {useExpaned, useProgressData} from "./compoables";
 import {useClassname} from '../utils/use-classname'
 import useTable from "./progress-table.ts";
+
+const props = inject('props')
 
 const {cx, c, ce, cm} = useClassname('print-progress-table')
 const cls = cx(() => {
@@ -38,7 +48,9 @@ function beforeClose(done) {
   // action.reset()
   done()
 }
-const {columns, tableData} = useTable()
+
+const tableRef = ref<InstanceType<typeof ElTable>>()
+const {columns, tableData,selection,selectionChange,toggleSelection} = useTable()
 defineExpose({
   open
 })

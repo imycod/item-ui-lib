@@ -1,8 +1,7 @@
 <script lang="ts">
 /* eslint-disable */
 // @ts-nocheck
-import type { PropType } from 'vue'
-import { defineComponent, reactive, watch, ref, onMounted } from 'vue'
+import { defineComponent,inject, PropType, reactive, watch, ref, onMounted } from 'vue'
 import { useClassname } from '../utils/use-classname'
 import { ElIcon } from "element-plus"
 import { ArrowDownBold, ArrowUpBold }  from "@element-plus/icons-vue"
@@ -15,46 +14,16 @@ export default defineComponent({
     ArrowDownBold,
     ArrowUpBold
   },
-  props: {
-    title:{
-      type: String,
-      default: 'Print Task Progress'
-    },
-    text:{
-      type: String,
-      default: 'The printing is in progress and is expected to take approximately 600 seconds.'
-    },
-    subText:{
-      type: String,
-      default: '500 seconds left'
-    },
-    duration:{
-      type: Number,
-      default: 1000,
-    },
-    type: {
-      type: String as PropType<'default' | 'primary' | 'dashed'>,
-      default: 'default',
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    size: {
-      type: String as PropType<'default' | 'small' | 'large'>,
-      default: 'default',
-    },
-  },
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     const { cx, c, ce, cm } = useClassname('print-progress')
     
     const [isExpand, expand] = useExpaned()
 
+    const props = inject('props')
+
     const cls = cx(() => {
       return {
         [c()]: true,
-        // [c(cm(props.type))]: !!props.type,
-        // [c('size', cm(props.size))]: props.size !== 'default',
         [c(cm('expanded'))]: isExpand.value,
       }
     })
@@ -86,6 +55,7 @@ export default defineComponent({
       abort,
       open,
       reset:action.reset,
+      props,
     }
   },
 })
@@ -95,7 +65,7 @@ export default defineComponent({
   <div ref="el" v-show="isVisible" :class="cls" :style="initialValue.style">
     <!-- header -->
     <div :class="c(ce('header'))">
-      <div :class="c(ce('header-title'))">{{ title }}</div>
+      <div :class="c(ce('header-title'))">{{ props.title }}</div>
       <div :class="c(ce('header-icon'))">
         <el-icon v-if="!isExpand" @click="expand">
           <ArrowDownBold />
@@ -108,14 +78,14 @@ export default defineComponent({
     <!-- progress -->
     <div :class="c(ce('progress'))">
 			<div :class="c(ce('progress-text'))" v-if="isExpand">
-				{{text}}
+				{{props.description}}
 			</div>
 			<el-progress
 				:percentage="progress.percentage"
 				status="success"
         :show-text="false"
 			/>
-			<div :class="c(ce('progress-subtest'))">{{subText}}</div>
+			<div :class="c(ce('progress-subtest'))">{{props.time}}</div>
 		</div>
     <!-- button handle -->
 		<div :class="c(ce('footer'))" v-if="isExpand">
