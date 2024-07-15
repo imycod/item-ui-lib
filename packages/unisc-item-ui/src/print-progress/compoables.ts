@@ -2,7 +2,6 @@
 // @ts-nocheck
 import { reactive, watch, ref, isRef, readonly, onUnmounted } from "vue";
 import { useDraggable } from "@vueuse/core";
-import {aw} from "vitest/dist/reporters-OH1c16Kq";
 
 export function useMyDraggable() {
   const el = ref<HTMLElement | null>(null);

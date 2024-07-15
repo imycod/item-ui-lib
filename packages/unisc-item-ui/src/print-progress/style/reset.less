@@ -1,0 +1,21 @@
+.@{btn-prefix-cls} {
+  &-table{
+    --el-bg-color: #333847;
+    .el-table{
+      --el-table-border-color: #333847 !important;
+    }
+    &.el-dialog {
+      background-color: @item-black;
+
+      .el-table--border .el-table__inner-wrapper:after, .el-table--border:after, .el-table--border:before, .el-table__inner-wrapper:before{
+        display: none;
+      }
+
+      .el-table__body-wrapper {
+        background: #1B1C23;
+      }
+      // 相同作用域，比如 print-progress 父级这种样式，子级也要这个类名
+      //background-color: var(--item-black);
+    }
+  }
+}

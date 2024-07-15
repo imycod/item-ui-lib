@@ -16,6 +16,7 @@ export default defineConfig({
   // 首先就是我们的插件，插件我们直接找打我们跟目录下的vite.config.ts的文件
   plugins: [
     AutoImport({
+      imports: ["vue"],
       resolvers: [ElementPlusResolver()],
     }),
     Components({

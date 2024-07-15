@@ -2,18 +2,19 @@
 @import "element-plus/theme-chalk/el-progress.css";
 @import "element-plus/theme-chalk/el-overlay.css";
 @import "element-plus/theme-chalk/el-dialog.css";
+@import "element-plus/theme-chalk/el-table.css";
+@import "element-plus/theme-chalk/el-table-column.css";
 
 @import "../../style/index.less";
 
-@btn-prefix-cls: ~"@{prefix-cls}-print-progress";
+@import "./var.less";
 
-@item-black: #21232b;
+@import "./reset.less";
 
 .@{btn-prefix-cls} {
   --item-black: #21232b;
   position: fixed;
   box-sizing: border-box;
-  line-height: 24px;
   top: 24px;
   right: 21px;
   width: 389px;
@@ -87,14 +88,6 @@
       &:last-child {
         color: #b178f7;
       }
-    }
-  }
-
-  &-table{
-    &__table.el-dialog {
-       background-color: @item-black;
-      // 相同作用域，比如 print-progress 父级这种样式，子级也要这个类名
-      //background-color: var(--item-black);
     }
   }
 }
