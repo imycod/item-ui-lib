@@ -16,16 +16,20 @@ export default defineConfig({
     vueJsx(),
     tsxAutoProps(),
     AutoImport({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver({
+        importStyle: 'sass'
+      })],
     }),
     Components({
       resolvers: [
-        ElementPlusResolver()
+        ElementPlusResolver({
+          importStyle: 'sass'
+        })
       ],
     }),
-    ElementPlus({
-      useSource: false
-    }),
+    // ElementPlus({
+    //   useSource: false
+    // }),
     // createStyleImportPlugin({
     //   resolves: [
     //     ElementPlusResolve(),
