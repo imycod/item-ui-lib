@@ -3,19 +3,19 @@ const data = [
   {
     index: "1",
     title: "首页",
-    icon: "HomeIcon",
+    icon: '',
     path: "/"
   },
   {
     index: "2",
     title: "表格",
-    icon: "TableIcon",
+    icon: '',
     path: "/table"
   },
   {
     index: "3",
     title: "表单",
-    icon: "FormIcon",
+    icon: 'platformIcon',
     path: "/form",
     children:[
       {

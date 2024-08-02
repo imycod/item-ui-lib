@@ -25,14 +25,12 @@ const props = defineProps({
 
 <template>
   <el-menu-item v-if="!item.children" :index="item.index">
-    <componnet :is="item.icon"></componnet>
+    <img :src="item.icon">
     <span>{{ item.title }}</span>
   </el-menu-item>
   <el-sub-menu :expand-close-icon="Plus" :expand-open-icon="Minus" v-else teleported :index="item.index" v-bind="attrs">
     <template #title>
-      <div v-if="toRaw(item.icon)">
-        <component :is="item.icon" />
-      </div>
+      <img :src="item.icon">
       <div> {{ item.title }}</div>
     </template>
     <sidebar-item v-for="child in item.children" :key="child.path" :item="child" />
