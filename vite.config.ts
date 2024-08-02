@@ -1,7 +1,8 @@
+/* eslint-disable */
+// @ts-nocheck
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
 import { defineConfig } from 'vite'
-
 // 导入demo插件
 import { vitepressDemo } from 'vite-plugin-vitepress-demo'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -10,19 +11,24 @@ import Components from 'unplugin-vue-components/vite'
 import { itemUIResolver } from './scripts/item-ui-resolver'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
 
 const baseUrl = fileURLToPath(new URL('.', import.meta.url))
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
     Components({
       resolvers: [
         itemUIResolver(),
         ElementPlusResolver()
       ],
     }),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
+    ElementPlus({
+      importStyle: 'sass',
+      useSource: true
     }),
     tsxAutoProps(),
     vitepressDemo({

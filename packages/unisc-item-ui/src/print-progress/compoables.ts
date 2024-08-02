@@ -43,8 +43,26 @@ const progress = reactive({
 });
 export function useProgressData(props, done = () => {}) {
 
+  function requestAdapter() {
+
+    if (typeof props.callback === "function"){
+
+    }
+    if (typeof props.refresh === "function"){
+
+    }
+    if (typeof props.callback === "string"){
+
+    }
+    if (typeof props.refresh === "string"){
+
+    }
+
+  }
+
   const fetchPrintStatus = async () => {
     try {
+      const request = requestAdapter()
       // const response = await axios.get('/api/label-process');
       // const result = response.data;
       // if (result.status === 'done' || result.list.every(item => item.status === 1)) {
@@ -112,7 +130,7 @@ export function useProgress({ emit, props }) {
   }
 
   const [isExpand, expand] = useExpaned();
-  const [progress, progressAction] = useProgressData(props, setStatus);
+  const [progress, action] = useProgressData(props, setStatus);
 
   function view() {
     expand();
@@ -123,14 +141,14 @@ export function useProgress({ emit, props }) {
     isVisible.value = true;
     isOpenCache = isOpen;
     setStatus(isVisible.value);
-    progressAction.load();
+    action.load();
     return readonly(progress);
   }
 
   function abort() {
     isVisible.value = false;
     setStatus(isVisible.value);
-    progressAction.stop();
+    action.stop();
     expand();
   }
 

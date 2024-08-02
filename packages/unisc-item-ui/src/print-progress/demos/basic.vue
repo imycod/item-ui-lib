@@ -23,6 +23,13 @@ function reset(){
   printRef.value!.reset()
 }
 
+function refresh(){
+
+}
+function callback(){
+
+}
+
 onMounted(()=>{
   open()
 })
@@ -35,7 +42,7 @@ onMounted(()=>{
     <div>
       <i-button type="primary" @click="open" :disabled="isOpen">打开print progress进度框</i-button>
       <i-button style="margin-left: 10px;" type="primary" @click="reset">reset</i-button>
-      <i-print-progress class="vp-raw" ref="printRef"/>
+      <i-print-progress :refresh="refresh" :callback="callback" class="vp-raw" ref="printRef"/>
     </div>
   </div>
 </template>

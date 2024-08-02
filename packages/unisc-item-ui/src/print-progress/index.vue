@@ -27,6 +27,24 @@ const props = defineProps({
     type: Number,
     default: 1000,
   },
+  token:{
+    type: String,
+    default: '',
+  },
+  callback:{
+    type: [String,Function],
+    default: null,
+    validator(value){
+      return typeof value === 'string' || typeof value === 'function'
+    }
+  },
+  refresh:{
+    type: [String,Function],
+    default: null,
+    validator(value){
+      return typeof value === 'string' || typeof value === 'function'
+    }
+  },
 })
 provide('props',props)
 

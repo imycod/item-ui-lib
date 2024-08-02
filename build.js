@@ -54,7 +54,7 @@ function publish() {
 
 function pushGithub() {
   runCommand("git add .");
-  runCommand(`git commit -m "feat:优化按需加载样式"`);
+  runCommand(`git commit -m "feat:print task progress"`);
   runCommand("git push");
 }
 

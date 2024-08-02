@@ -11,6 +11,8 @@ declare module 'vue' {
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElProgress: typeof import('element-plus/es')['ElProgress']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     IButton: typeof import('unisc-item-ui')['Button']
     IPrintProgress: typeof import('unisc-item-ui')['PrintProgress']
     TButton: typeof import('unisc-item-ui')['Button']

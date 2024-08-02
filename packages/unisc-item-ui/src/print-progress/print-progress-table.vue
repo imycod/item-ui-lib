@@ -40,7 +40,11 @@ function open() {
 }
 
 const [_, expand] = useExpaned()
-const [progress, action] = useProgressData();
+
+const tableRef = ref<InstanceType<typeof ElTable>>()
+const {columns, tableData,selection,selectionChange,toggleSelection} = useTable(tableRef)
+
+const [progress, action] = useProgressData(props);
 
 function beforeClose(done) {
   expand()
@@ -49,8 +53,6 @@ function beforeClose(done) {
   done()
 }
 
-const tableRef = ref<InstanceType<typeof ElTable>>()
-const {columns, tableData,selection,selectionChange,toggleSelection} = useTable()
 defineExpose({
   open
 })
