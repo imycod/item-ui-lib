@@ -7,7 +7,7 @@ import DefaultTheme from 'vitepress/theme'
 import { AntdTheme } from 'vite-plugin-vitepress-demo/theme'
 
 // 导入样式
-import 'unisc-item-ui/styles.ts'
+import 'item-ui/styles.ts'
 import './style.css'
 
 export default {

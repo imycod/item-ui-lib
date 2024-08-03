@@ -8,13 +8,20 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
+    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElDialog: typeof import('element-plus/es')['ElDialog']
     ElIcon: typeof import('element-plus/es')['ElIcon']
+    ElMenu: typeof import('element-plus/es')['ElMenu']
+    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
+    ElMenuItemGroup: typeof import('element-plus/es')['ElMenuItemGroup']
     ElProgress: typeof import('element-plus/es')['ElProgress']
+    ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    IButton: typeof import('unisc-item-ui')['Button']
-    IPrintProgress: typeof import('unisc-item-ui')['PrintProgress']
+    IButton: typeof import('item-ui')['Button']
+    IconMenu: typeof import('item-ui')['conMenu']
+    IPrintProgress: typeof import('item-ui')['PrintProgress']
+    ISidebar: typeof import('item-ui')['Sidebar']
     TButton: typeof import('unisc-item-ui')['Button']
   }
 }

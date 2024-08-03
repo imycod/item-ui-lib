@@ -39,8 +39,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        'find': /^unisc-item-ui/,
-        'replacement': path.resolve(baseUrl, 'packages/unisc-item-ui/src'),
+        'find': /^item-ui/,
+        'replacement': path.resolve(baseUrl, 'packages/item-ui/src'),
       },
     ],
   },
