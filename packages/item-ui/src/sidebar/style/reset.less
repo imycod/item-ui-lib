@@ -61,5 +61,25 @@
       box-sizing: border-box;
       margin: 0px 10px;
     }
+    .el-menu-item, .el-sub-menu {
+      margin: 0px !important;
+    }
+    
+    .el-sub-menu.is-active{
+      .el-sub-menu__title {
+        background-color: #333B47;
+        border-radius: 10px;
+      }
+    }
+    .el-menu--collapse {
+      .el-sub-menu__title > div{
+        display: none;
+      }
+      .el-menu-item,.el-sub-menu__title {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+      }
+    }
   }
 }
