@@ -1,0 +1,87 @@
+.@{side-prefix-cls} {
+  --el-menu-text-color: #fff;
+  --el-menu-hover-text-color: #fff;
+  --el-menu-hover-bg-color: rgb(67, 74, 80);
+  --el-menu-active-color: #ffd04b;
+  --el-menu-level: 0;
+
+  border-right: 0px !important;
+}
+
+.dark {
+  .@{side-prefix-cls} {
+    --el-menu-text-color: #fff;
+    --el-menu-hover-text-color: #9b51f5 !important;
+    --el-menu-hover-bg-color: none !important;
+    --el-menu-active-color: none !important;
+    --el-menu-bg-color: none !important;
+    --el-menu-level: 0;
+
+    .el-sub-menu {
+      --el-menu-item-hover-fill: none !important;
+      --el-menu-border-color: var(--el-border-color);
+    }
+    .el-menu--inline {
+      --el-menu-text-color: #fff;
+      --el-menu-hover-text-color: #9b51f5 !important;
+      --el-menu-bg-color: none !important;
+      --el-menu-hover-bg-color: none !important;
+      --el-menu-active-color: none !important;
+      --el-menu-level: 1;
+    }
+    .el-sub-menu__title:hover,
+    .el-menu-item:hover {
+      color: var(--el-menu-hover-text-color);
+    }
+    .el-sub-menu.is-active.is-opened {
+      & > .el-sub-menu__title {
+        background-color: #333847;
+        border-radius: 10px;
+        &:hover {
+          color: #fff;
+        }
+      }
+      .is-active {
+        color: var(--el-menu-hover-text-color);
+      }
+    }
+    .el-menu-item.is-active {
+      background-color: #333847;
+      border-radius: 10px;
+      &:hover {
+        color: #fff;
+      }
+    }
+    .el-sub-menu.is-opened.is-active {
+      .el-menu-item.is-active {
+        background-color: transparent !important;
+        border-radius: none !important;
+      }
+    }
+    .el-sub-menu,
+    .el-menu-item {
+      box-sizing: border-box;
+      margin: 0px 10px;
+    }
+    .el-menu-item, .el-sub-menu {
+      margin: 0px !important;
+    }
+    
+    .el-sub-menu.is-active{
+      .el-sub-menu__title {
+        background-color: #333B47;
+        border-radius: 10px;
+      }
+    }
+  }
+  .el-menu--collapse {
+    .el-sub-menu__title > div{
+      display: none;
+    }
+    .el-menu-item,.el-sub-menu__title {
+      display: flex;
+      align-content: center;
+      justify-content: center;
+    }
+  }
+}

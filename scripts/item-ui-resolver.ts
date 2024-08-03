@@ -7,7 +7,7 @@ export function itemUIResolver(): ComponentResolver {
       if (name.startsWith('I')) {
         return {
           name: name.slice(1),
-          from: 'unisc-item-ui',
+          from: 'item-ui',
         }
       }
     },

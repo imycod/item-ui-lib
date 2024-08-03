@@ -7,7 +7,7 @@ import path from "path";
 import fs from "fs";
 
 const projectRoot = process.cwd();
-const uiPackagePath = path.join(projectRoot, "packages", "unisc-item-ui");
+const uiPackagePath = path.join(projectRoot, "packages", "item-ui");
 
 function runCommand(command, options = {}) {
   try {
@@ -54,7 +54,7 @@ function publish() {
 
 function pushGithub() {
   runCommand("git add .");
-  runCommand(`git commit -m "feat:print task progress"`);
+  runCommand(`git commit -m "feat:opt menu collapse style"`);
   runCommand("git push");
 }
 
