@@ -28,6 +28,7 @@ export default defineConfig({
             { text: '按钮', link: '/components/button/' },
             { text: '打印组件', link: '/components/print-progress/' },
             { text: '侧边栏', link: '/components/sidebar/' },
+            { text: '通知栏', link: '/components/notify/' },
           ],
         },
       ],
