@@ -6,10 +6,52 @@
   // --el-menu-level: 0;
 
   // border-right: 0px !important;
+
+  --item-color-red-400: #ec4a44;
+  --item-color-purple: #9b51f5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 30px;
+  position: relative;
+  &--hover {
+    &:hover {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        bottom: 0;
+        width: 30px;
+        height: 4px;
+        background-color: var(--item-color-purple);
+      }
+    }
+  }
+
+  &-bell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    &__badge {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--item-color-red-400);
+      border-radius: 100%;
+      position: absolute;
+      right: 0;
+    }
+  }
 }
 
 .dark {
   .@{notify-prefix-cls} {
-
   }
 }

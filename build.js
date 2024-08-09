@@ -54,7 +54,7 @@ function publish() {
 
 function pushGithub() {
   runCommand("git add .");
-  runCommand(`git commit -m "feat:opt menu collapse style"`);
+  runCommand(`git commit -m "feat: notify"`);
   runCommand("git push");
 }
 
