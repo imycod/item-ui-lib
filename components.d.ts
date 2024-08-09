@@ -19,6 +19,7 @@ declare module 'vue' {
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     IButton: typeof import('item-ui')['Button']
     INotify: typeof import('item-ui')['Notify']
+    IPrintProgress: typeof import('item-ui')['PrintProgress']
     ISidebar: typeof import('item-ui')['Sidebar']
   }
 }
