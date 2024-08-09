@@ -37,6 +37,7 @@
     "@floating-ui/vue": "^1.0.2",
     "@vueuse/core": "^10.11.0",
     "classnames": "^2.5.1",
+    "dayjs": "^1.11.12",
     "element-plus": "^2.7.8",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue": "^3.0.0"

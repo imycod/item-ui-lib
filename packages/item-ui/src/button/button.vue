@@ -1,50 +1,62 @@
 <script lang="ts">
-import type { PropType } from 'vue'
-import { defineComponent } from 'vue'
-import { useClassname } from '../utils/use-classname'
+import type { PropType } from "vue";
+import { defineComponent } from "vue";
+import { useClassname } from "../utils/use-classname";
 
 export default defineComponent({
-  name: 'IButton',
+  name: "IButton",
   props: {
     type: {
-      type: String as PropType<'default' | 'primary' | 'dashed'>,
-      default: 'default',
+      type: String as PropType<"default" | "primary" | "dashed">,
+      default: "default",
     },
     disabled: {
       type: Boolean,
       default: false,
     },
     size: {
-      type: String as PropType<'default' | 'small' | 'large'>,
-      default: 'default',
+      type: String as PropType<"default" | "small" | "large">,
+      default: "default",
     },
   },
-  emits: ['click'],
-  setup(props, { emit }) {  
-    const { cx, c, cm } = useClassname('button')
+  emits: ["click"],
+  setup(props, { emit }) {
+    const { cx, c, cm } = useClassname("button");
     const cls = cx(() => {
       return {
         [c()]: true,
         [c(cm(props.type))]: !!props.type,
-        [c('size', cm(props.size))]: props.size !== 'default',
-      }
-    })
+        [c("size", cm(props.size))]: props.size !== "default",
+      };
+    });
 
     const handleClick = (e: MouseEvent) => {
-      if (props.disabled)
-        return
-      emit('click', e)
-    }
+      if (props.disabled) return;
+      emit("click", e);
+    };
     return {
       cls,
       handleClick,
-    }
+    };
   },
-})
+});
 </script>
 
 <template>
-  <button :class="cls" :disabled="disabled" @click="handleClick">
-    <slot />
-  </button>
+  <el-popover
+    placement="bottom-end"
+    title="Title"
+    :show-arrow="false"
+    :width="508"
+    trigger="click"
+    :offset="16"
+    content="this is content, this is content, this is content"
+    v-bind="$attrs"
+  >
+    <template #reference>
+      <button :class="cls" :disabled="disabled" @click="handleClick">
+        <slot />
+      </button>
+    </template>
+  </el-popover>
 </template>
