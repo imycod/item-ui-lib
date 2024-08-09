@@ -1,7 +1,8 @@
 @import "./colors.less";
 
 :root {
-  --item-color-primary: var(--purple-500);
+  --item-color-primary: red;
+
 
   --item-color-primary-1: #f9f0ff;
   --item-color-primary-2: #efdbff;
@@ -79,6 +80,8 @@
 }
 
 :root.dark {
+  --item-color-primary: var(--purple-500) !important;
+
   --el-popper-border-color: var(--black-100);
   --el-bg-color-overlay: var(--black-400);
   --el-bg-color: var(--black-400); /* overlay */
