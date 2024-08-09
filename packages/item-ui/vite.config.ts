@@ -5,11 +5,15 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import dts from "vite-plugin-dts";
 import { tsxAutoProps } from "vite-plugin-tsx-auto-props";
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import ElementPlus from 'unplugin-element-plus/vite';
-import {createStyleImportPlugin,ElementPlusResolve} from 'vite-plugin-style-import';
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
+import ElementPlus from "unplugin-element-plus/vite";
+import svgLoader from "vite-svg-loader";
+import {
+  createStyleImportPlugin,
+  ElementPlusResolve,
+} from "vite-plugin-style-import";
 
 // 读取我们当前的根目录
 export default defineConfig({
@@ -20,12 +24,10 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [
-        ElementPlusResolver()
-      ],
+      resolvers: [ElementPlusResolver()],
     }),
     ElementPlus({
-      useSource: false
+      useSource: false,
     }),
     // createStyleImportPlugin({
     //   resolves: [
@@ -50,6 +52,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     tsxAutoProps(),
+    svgLoader(),
   ],
   // 接下来我们来写一下打包的，关于打包库，我们需要使用vite的lib模式
   build: {

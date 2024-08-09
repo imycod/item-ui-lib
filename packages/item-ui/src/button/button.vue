@@ -20,7 +20,7 @@ export default defineComponent({
     },
   },
   emits: ['click'],
-  setup(props, { emit }) {
+  setup(props, { emit }) {  
     const { cx, c, cm } = useClassname('button')
     const cls = cx(() => {
       return {

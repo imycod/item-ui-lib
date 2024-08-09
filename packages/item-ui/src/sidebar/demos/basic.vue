@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import iconSvg from "./platform.svg"
 const data = [
   {
     index: "1",
     title: "首页",
-    icon: '',
+    icon: iconSvg,
     path: "/"
   },
   {
@@ -48,5 +49,5 @@ const data = [
 </script>
 
 <template>
-  <i-sidebar :data="data"></i-sidebar>
+  <i-sidebar class="dark:bg-red-500" :data="data"></i-sidebar>
 </template>
