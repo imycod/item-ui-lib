@@ -1,6 +1,6 @@
 .@{side-prefix-cls} {
-  --el-menu-text-color: #fff;
-  --el-menu-hover-text-color: #fff;
+  --el-menu-text-color: var(--white);
+  --el-menu-hover-text-color: var(--white);
   --el-menu-hover-bg-color: rgb(67, 74, 80);
   --el-menu-active-color: #ffd04b;
   --el-menu-level: 0;
@@ -10,8 +10,8 @@
 
 .dark {
   .@{side-prefix-cls} {
-    --el-menu-text-color: #fff;
-    --el-menu-hover-text-color: #9b51f5 !important;
+    --el-menu-text-color: var(--white);
+    --el-menu-hover-text-color: var(--item-color-primary) !important;
     --el-menu-hover-bg-color: none !important;
     --el-menu-active-color: none !important;
     --el-menu-bg-color: none !important;
@@ -22,8 +22,8 @@
       --el-menu-border-color: var(--el-border-color);
     }
     .el-menu--inline {
-      --el-menu-text-color: #fff;
-      --el-menu-hover-text-color: #9b51f5 !important;
+      --el-menu-text-color: var(--white);
+      --el-menu-hover-text-color: var(--item-color-primary) !important;
       --el-menu-bg-color: none !important;
       --el-menu-hover-bg-color: none !important;
       --el-menu-active-color: none !important;
@@ -35,10 +35,10 @@
     }
     .el-sub-menu.is-active.is-opened {
       & > .el-sub-menu__title {
-        background-color: #333847;
+        background-color: var(--white-200);
         border-radius: 10px;
         &:hover {
-          color: #fff;
+          color: var(--white);
         }
       }
       .is-active {
@@ -46,10 +46,10 @@
       }
     }
     .el-menu-item.is-active {
-      background-color: #333847;
+      background-color: var(--white-200);
       border-radius: 10px;
       &:hover {
-        color: #fff;
+        color: var(--white);
       }
     }
     .el-sub-menu.is-opened.is-active {
@@ -69,7 +69,7 @@
     
     .el-sub-menu.is-active{
       .el-sub-menu__title {
-        background-color: #333B47;
+        background-color: var(--white-200);
         border-radius: 10px;
       }
     }

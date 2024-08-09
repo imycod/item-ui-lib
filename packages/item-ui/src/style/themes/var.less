@@ -1,8 +1,8 @@
 @import "./colors.less";
 
 :root{
+  --item-color-primary: var(--purple-500);
 
-  --item-color-primary: var(--item-color-primary-6);
   --item-color-primary-selected: var(--item-color-primary-1);
   --item-color-primary-hover: var(--item-color-primary-5);
   --item-color-primary-active: var(--item-color-primary-7);
@@ -33,6 +33,24 @@
   --item-color-dark: #21232b;
   --item-color-dark-1: #333847;
   --item-color-dark-2: #1B1C23;
+}
 
-  --item-color-purple: #9B51F5;
+:root.dark {
+  --item-popper-border-color: var(--black-100);
+  --item-bg-color-overlay: var(--black-400);
+  --item-bg-color: var(--black-400); /* overlay */
+  --item-text-color-regular: var(--white); /* dialog > text */
+  --item-menu-bg-color: var(--black-300);
+  --item-border-color: var(--black-50);
+  --item-text-color-primary: var(--white);
+  --item-menu-active-color: var(--white);
+  --item-menu-hover-text-color: var(--white);
+  --item-menu-hover-bg-color: rgba(255, 255, 255, 0.1);
+  --item-input-text-color: var(--white);
+  --item-fill-color-blank: var(--black-50);
+  --item-fill-color-light: var(--black-300);
+  --item-table-border-color: var(--black-50);
+  --item-border-color-lighter: var(--black-50);
+  --item-mask-color: var(--black-500);
+  --item-pagination-hover-color: var(--purple-500) !important;
 }
